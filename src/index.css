@@ -1,0 +1,151 @@
+:root {
+  font-family: "Courier New", Courier, monospace;
+  line-height: 1.5;
+  font-weight: 400;
+
+  color-scheme: light dark;
+  color: #00ff00;
+  background-color: #000000;
+
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+a {
+  font-weight: 500;
+  color: #00ffff;
+  text-decoration: inherit;
+}
+a:hover {
+  color: #ff00ff;
+}
+
+body {
+  margin: 0;
+  display: flex;
+  place-items: center;
+  min-width: 320px;
+  min-height: 100vh;
+  background-color: #000000;
+}
+
+h1 {
+  font-size: 3.2em;
+  line-height: 1.1;
+  color: #ff00ff;
+}
+
+button {
+  border-radius: 8px;
+  border: 1px solid #00ff00;
+  padding: 0.6em 1.2em;
+  font-size: 1em;
+  font-weight: 500;
+  font-family: inherit;
+  background-color: #000000;
+  color: #00ff00;
+  cursor: pointer;
+  transition: border-color 0.25s;
+}
+button:hover {
+  border-color: #ff00ff;
+}
+button:focus,
+button:focus-visible {
+  outline: 4px auto -webkit-focus-ring-color;
+}
+
+@media (prefers-color-scheme: light) {
+  :root {
+    color: #000000;
+    background-color: #ffffff;
+  }
+  a:hover {
+    color: #ff00ff;
+  }
+  button {
+    background-color: #ffffff;
+    color: #000000;
+  }
+}
+.card {
+  background-color: #1e1e1e;
+  border-radius: 8px;
+  padding: 20px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  color: #ffffff;
+  max-width: 800px;
+  margin: 20px auto;
+}
+
+.filter-sort {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  margin-bottom: 20px;
+}
+
+.filter-input, .sort-select {
+  padding: 10px;
+  border-radius: 4px;
+  border: 1px solid #cccccc;
+  font-size: 1em;
+}
+.posts-container {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.post-row {
+  background-color: #2e2e2e;
+  padding: 15px;
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.post-title {
+  font-size: 1.5em;
+  margin: 0 0 10px 0;
+  color: #ff00ff;
+}
+
+.post-summary, .post-vibes, .post-innovative, .post-positive {
+  margin: 5px 0;
+  color: #cccccc;
+}
+
+.post-details-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 10px;
+  margin-top: 10px;
+}
+
+.post-detail {
+  background-color: #3e3e3e;
+  padding: 10px;
+  border-radius: 4px;
+}
+
+.detail-title {
+  font-weight: bold;
+  color: #ffffff;
+  margin-right: 5px;
+}
+
+.post-summary, .post-vibes, .post-innovative, .post-positive {
+  color: #cccccc;
+}
+.vibe-tag {
+  display: inline-block;
+  background-color: #006400;
+  color: #ffffff;
+  padding: 5px 10px;
+  border-radius: 12px;
+  font-size: 0.9em;
+  margin-right: 5px;
+  margin-bottom: 5px;
+}
