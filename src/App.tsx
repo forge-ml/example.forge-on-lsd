@@ -3,9 +3,10 @@ import "./App.css";
 import { z } from "zod";
 import HomepageSchema, { Vibes } from "../forge/schema/startupnews";
 
-const SERVER_URL = "http://localhost:8001";
+const SERVER_URL = import.meta.env.VITE_SERVER_URL;
 
 type Posts = z.infer<typeof HomepageSchema>;
+type Vibes = z.infer<typeof Vibes>;
 
 function App() {
   const [homepage, setHomepage] = useState<Posts | null>(null);
@@ -62,8 +63,8 @@ function App() {
           <label>
             Filter by Vibe:
             <select
-              value={vibeFilter}
-              onChange={(e) => setVibeFilter(e.target.value)}
+              value={vibeFilter ?? ""}
+              onChange={(e) => setVibeFilter(e.target.value as Vibes)}
               className="filter-input"
             >
               <option value="">All Vibes</option>

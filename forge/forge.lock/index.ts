@@ -1,5 +1,5 @@
 
-  const serverUrl = "http://localhost:3009"
+  const serverUrl = "https://api.forge-ml.com"
   
 
 /** THIS IS A GENERATED FILE, EDITS WILL BE OVERWRITTEN */
@@ -93,7 +93,7 @@ export default Forge;
 startupnews: {
     query: (prompt: string, opts?: RequestOptions) => {
         return createRequest<Zod.infer<typeof startupnews_schema>>({
-          username: "jakforgepriv",
+          username: "jakezegil776",
           path: "startupnews",
         })(prompt, {
           token: opts?.token || forgeKey,
