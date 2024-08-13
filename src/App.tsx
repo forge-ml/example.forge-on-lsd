@@ -66,7 +66,7 @@ function App() {
         </div>
         <div className="built-with-forge" style={{ textAlign: "right", margin: "32px" }}>
           <p>
-            Built with <a href="https://forge-ml.com" target="_blank" rel="noopener noreferrer">Forge</a>
+            Built with <a href="https://forge-ml.com" target="_blank" rel="noopener noreferrer">Forge</a> and <a href="https://lsd.so/" target="_blank" rel="noopener noreferrer">LSD</a>
           </p>
         </div>
         <div className="filter-sort" style={{ flexDirection: "row" }}>
