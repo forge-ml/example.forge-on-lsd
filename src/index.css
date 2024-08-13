@@ -149,3 +149,54 @@ button:focus-visible {
   margin-right: 5px;
   margin-bottom: 5px;
 }
+
+.filter-input {
+  padding: 8px;
+  border: 1px solid #cccccc;
+  border-radius: 4px;
+  margin-right: 10px;
+}
+
+.sort-select {
+  padding: 8px;
+  border: 1px solid #cccccc;
+  border-radius: 4px;
+  margin-right: 10px;
+}
+
+.posts-container {
+  margin-top: 20px;
+}
+
+.post-row {
+  background-color: #2e2e2e;
+  padding: 15px;
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  margin-bottom: 20px;
+}
+.overall-vibe {
+  background-color: #2e2e2e;
+  padding: 10px;
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  margin-bottom: 15px;
+  color: #ffffff;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+}
+
+.overall-vibe h3 {
+  margin-top: 0;
+  margin-bottom: 5px;
+  color: #ffffff;
+  font-size: 1.2em;
+}
+
+.overall-vibe p {
+  color: #cccccc;
+  font-size: 0.9em;
+  margin: 0;
+}

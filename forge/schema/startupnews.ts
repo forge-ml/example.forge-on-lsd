@@ -38,7 +38,7 @@ const PostSchema = z.object({
 
 const HomepageSchema = z.object({
   posts: z.array(PostSchema).describe("The posts on the homepage"),
-  summary: z.string().describe("Give a detailed summary of the posts that helps the user synthesize what's going on."),
+  summary: z.string().describe("Give a clear summary of the posts that helps the user synthesize what's going on. Be as specific as possible, calling out the most important posts or trends. Leave out generic statements."),
   overallVibe: Vibes.describe("The overall vibes of the homepage"),
 });
 

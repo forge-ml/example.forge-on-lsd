@@ -1,50 +1,21 @@
-# React + TypeScript + Vite
+# Setting Up
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Copy your .env.local and set your environment variables: `cp .env.local .env`
 
-Currently, two official plugins are available:
+Set your FORGE_KEY in your environment (https://github.com/forge-ml/forge-ml?tab=readme-ov-file#-quickstart).
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+Boot up your dev environment: `npm run dev`
 
-## Expanding the ESLint configuration
+## Modifying the code
 
-If you are developing a production application, we recommend updating the configuration to enable type aware lint rules:
+If you want to modify the behavior of the endpoint, you'll need to update the `forge.config.json` to point to your own forge username and deploy your own forge endpoints. [More info here](https://github.com/forge-ml/forge-ml?tab=readme-ov-file#-quickstart).
 
-- Configure the top-level `parserOptions` property like this:
 
-```js
-export default tseslint.config({
-  languageOptions: {
-    // other options...
-    parserOptions: {
-      project: ['./tsconfig.node.json', './tsconfig.app.json'],
-      tsconfigRootDir: import.meta.dirname,
-    },
-  },
-})
-```
+## What's Forge?
 
-- Replace `tseslint.configs.recommended` to `tseslint.configs.recommendedTypeChecked` or `tseslint.configs.strictTypeChecked`
-- Optionally add `...tseslint.configs.stylisticTypeChecked`
-- Install [eslint-plugin-react](https://github.com/jsx-eslint/eslint-plugin-react) and update the config:
+Forge is a developer kit that makes building AI products dead simple. Check it out here: [https://github.com/forge-ml/forge-ml](https://github.com/forge-ml/forge-ml)
 
-```js
-// eslint.config.js
-import react from 'eslint-plugin-react'
 
-export default tseslint.config({
-  // Set the react version
-  settings: { react: { version: '18.3' } },
-  plugins: {
-    // Add the react plugin
-    react,
-  },
-  rules: {
-    // other rules...
-    // Enable its recommended rules
-    ...react.configs.recommended.rules,
-    ...react.configs['jsx-runtime'].rules,
-  },
-})
-```
+## What's LSD?
+
+LSD is a collection of web technologies that makes web scraping obsolete by turning the internet into a real-time API: [https://lsd.so/](https://lsd.so)

@@ -5,11 +5,17 @@ import HomepageSchema, { Vibes } from "../forge/schema/startupnews";
 
 const SERVER_URL = import.meta.env.VITE_SERVER_URL;
 
-type Posts = z.infer<typeof HomepageSchema>;
+const ExtendedPostSchema = HomepageSchema.extend({
+  posts: HomepageSchema.shape.posts.element.extend({
+    link: z.string().url().describe("The link to the post"),
+  }).array(),
+});
+
+type Homepage = z.infer<typeof ExtendedPostSchema>;
 type Vibes = z.infer<typeof Vibes>;
 
 function App() {
-  const [homepage, setHomepage] = useState<Posts | null>(null);
+  const [homepage, setHomepage] = useState<Homepage | null>(null);
   const [filter, setFilter] = useState("");
   const [vibeFilter, setVibeFilter] = useState<Vibes | null>(null);
   const [sortOrder, setSortOrder] = useState("asc");
@@ -49,6 +55,20 @@ function App() {
   return (
     <>
       <div className="card">
+        <div style={{ display: "flex", justifyContent: "center" }}>
+          <h2>Today in Hacker News</h2>
+          <div className="vibe-tag" style={{ margin: "auto 16px", height: "fit-content", backgroundColor: "#0074D9", color: "#FFFFFF" }}>
+            Vibe Breakdown: {homepage?.overallVibe ?? "Murky waters today..."}
+          </div>
+        </div>
+        <div className="summary">
+          <p>{homepage?.summary ?? "Some crazy stuff is happening... You should check it out."}</p>
+        </div>
+        <div className="built-with-forge" style={{ textAlign: "right", margin: "32px" }}>
+          <p>
+            Built with <a href="https://forge-ml.com" target="_blank" rel="noopener noreferrer">Forge</a>
+          </p>
+        </div>
         <div className="filter-sort" style={{ flexDirection: "row" }}>
           <label>
             Filter posts:
@@ -102,7 +122,11 @@ function App() {
         <div className="posts-container">
           {filteredPosts.map((post, index) => (
             <div key={index} className="post-row">
-              <h2 className="post-title">{post.title}</h2>
+              <h2 className="post-title">
+                <a href={post.link} target="_blank" rel="noopener noreferrer">
+                  {post.title}
+                </a>
+              </h2>
               <div className="post-details-grid">
                 <div className="post-detail">
                   <span className="detail-title">Summary:</span>

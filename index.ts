@@ -24,23 +24,26 @@ app.get("/startupnews", async (_req, res) => {
     console.log("Connected to database");
   });
   try {
-    const titles = await client.query(
-      "SELECT a as title FROM https://news.ycombinator.com GROUP BY span.titleline;"
+    const pgResults = await client.query(
+      "SELECT a as title, a@href as link FROM https://news.ycombinator.com GROUP BY span.titleline;"
     );
-    const q = prompt(
-      titles.rows
-        .sort((a, b) => (b.title > a.title ? -1 : 1))
-        .map((row) => row.title)
-        .join("\n")
-    );
+    const titles = pgResults.rows
+      .sort((a, b) => (b.title > a.title ? -1 : 1))
+      .map((row) => row.title)
+      .join("\n")
+    const q = prompt(titles);
 
     const response = await forge.startupnews.query(q);
 
-    res.json(response);
+    const postsWithLinks = response.posts.map((post) => ({
+      ...post,
+      link: pgResults.rows.find((row) => row.title === post.title)?.link,
+    }));
+
+    res.json({ ...response, posts: postsWithLinks });
 
     client.end();
   } catch (e) {
-    console.error(e);
     res.status(500).send("Error fetching startup news");
   }
 });
