@@ -11,6 +11,13 @@
   text-rendering: optimizeLegibility;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  font-size: 16px; /* Base font size */
+}
+
+@media screen and (max-width: 768px) {
+  :root {
+    font-size: 14px; /* Slightly smaller base font size for mobile */
+  }
 }
 
 a {
@@ -25,16 +32,19 @@ a:hover {
 body {
   margin: 0;
   display: flex;
-  place-items: center;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
   min-width: 320px;
   min-height: 100vh;
   background-color: #000000;
 }
 
 h1 {
-  font-size: 3.2em;
+  font-size: 2em;
   line-height: 1.1;
   color: #ff00ff;
+  text-align: center;
 }
 
 button {
@@ -70,24 +80,68 @@ button:focus-visible {
     color: #000000;
   }
 }
+
+.header {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+.header h2 {
+  margin-bottom: 10px;
+  color: #ffffff;
+}
+
+.header .vibe-tag {
+  background-color: #3a3a3a;
+  color: #00ff00;
+  padding: 5px 10px;
+  border-radius: 4px;
+  font-size: 0.9em;
+}
+
+@media screen and (min-width: 768px) {
+  .header {
+    flex-direction: row;
+    justify-content: space-between;
+  }
+
+  .header h2 {
+    margin-bottom: 0;
+  }
+}
+
 .card {
   background-color: #1e1e1e;
   border-radius: 8px;
   padding: 20px;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
   color: #ffffff;
+  width: 90%;
   max-width: 800px;
   margin: 20px auto;
+  overflow: hidden;
+  word-wrap: break-word;
 }
 
 .filter-sort {
   display: flex;
   flex-direction: column;
+  flex-wrap: wrap;
   gap: 10px;
   margin-bottom: 20px;
 }
 
-.filter-input, .sort-select {
+@media screen and (min-width: 768px) {
+  .filter-sort {
+    flex-direction: row;
+  }
+}
+
+.filter-input,
+.sort-select {
   padding: 10px;
   border-radius: 4px;
   border: 1px solid #cccccc;
@@ -104,22 +158,28 @@ button:focus-visible {
   padding: 15px;
   border-radius: 8px;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  overflow: hidden;
+  word-wrap: break-word;
 }
 
 .post-title {
-  font-size: 1.5em;
+  font-size: 1.3em;
   margin: 0 0 10px 0;
   color: #ff00ff;
 }
 
-.post-summary, .post-vibes, .post-innovative, .post-positive {
+.post-summary,
+.post-vibes,
+.post-innovative,
+.post-positive {
   margin: 5px 0;
   color: #cccccc;
+  font-size: 0.9em;
 }
 
 .post-details-grid {
   display: grid;
-  grid-template-columns: 1fr 1fr;
+  grid-template-columns: 1fr;
   gap: 10px;
   margin-top: 10px;
 }
@@ -128,6 +188,40 @@ button:focus-visible {
   background-color: #3e3e3e;
   padding: 10px;
   border-radius: 4px;
+  overflow: hidden;
+  word-wrap: break-word;
+}
+
+.post-vibes {
+  background-color: #3e3e3e;
+  padding: 10px;
+  border-radius: 4px;
+  overflow: hidden;
+  word-wrap: break-word;
+}
+
+.post-score {
+  display: none;
+}
+
+@media (min-width: 576px) and (max-width: 767px) {
+  .post-details-grid {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
+@media (min-width: 768px) {
+  .post-details-grid {
+    grid-template-columns: 2fr 1fr;
+  }
+
+  .post-detail {
+    grid-column: 1 / 2;
+  }
+
+  .post-vibes {
+    grid-column: 2 / 3;
+  }
 }
 
 .detail-title {
@@ -136,16 +230,13 @@ button:focus-visible {
   margin-right: 5px;
 }
 
-.post-summary, .post-vibes, .post-innovative, .post-positive {
-  color: #cccccc;
-}
 .vibe-tag {
   display: inline-block;
   background-color: #006400;
   color: #ffffff;
   padding: 5px 10px;
   border-radius: 12px;
-  font-size: 0.9em;
+  font-size: 0.8em;
   margin-right: 5px;
   margin-bottom: 5px;
 }
@@ -155,6 +246,7 @@ button:focus-visible {
   border: 1px solid #cccccc;
   border-radius: 4px;
   margin-right: 10px;
+  font-size: 0.9em;
 }
 
 .sort-select {
@@ -162,19 +254,13 @@ button:focus-visible {
   border: 1px solid #cccccc;
   border-radius: 4px;
   margin-right: 10px;
+  font-size: 0.9em;
 }
 
 .posts-container {
   margin-top: 20px;
 }
 
-.post-row {
-  background-color: #2e2e2e;
-  padding: 15px;
-  border-radius: 8px;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-  margin-bottom: 20px;
-}
 .overall-vibe {
   background-color: #2e2e2e;
   padding: 10px;
@@ -186,17 +272,99 @@ button:focus-visible {
   flex-direction: column;
   align-items: center;
   text-align: center;
+  overflow: hidden;
+  word-wrap: break-word;
 }
 
 .overall-vibe h3 {
   margin-top: 0;
   margin-bottom: 5px;
   color: #ffffff;
-  font-size: 1.2em;
+  font-size: 1.1em;
 }
 
 .overall-vibe p {
   color: #cccccc;
   font-size: 0.9em;
   margin: 0;
+}
+
+@media (min-width: 384px) {
+  h1 {
+    font-size: 2.5em;
+  }
+
+  .card {
+    padding: 30px;
+  }
+
+  .post-title {
+    font-size: 1.5em;
+  }
+
+  .post-summary,
+  .post-vibes,
+  .post-innovative,
+  .post-positive {
+    font-size: 1em;
+  }
+
+  .vibe-tag {
+    font-size: 0.9em;
+  }
+
+  .filter-input,
+  .sort-select {
+    font-size: 1em;
+  }
+
+  .overall-vibe h3 {
+    font-size: 1.2em;
+  }
+
+  .overall-vibe p {
+    font-size: 1em;
+  }
+}
+
+@media (min-width: 768px) {
+  :root {
+    font-size: 18px;
+  }
+
+  h1 {
+    font-size: 3em;
+  }
+
+  .card {
+    padding: 40px;
+  }
+
+  .post-title {
+    font-size: 1.8em;
+  }
+
+  .post-summary,
+  .post-vibes,
+  .post-innovative,
+  .post-positive {
+    font-size: 1.1em;
+  }
+
+  .vibe-tag {
+    font-size: 1em;
+  }
+
+  .filter-input,
+  .sort-select {
+    font-size: 1.1em;
+  }
+
+  .overall-vibe h3 {
+    font-size: 1.4em;
+  }
+
+  .overall-vibe p {
+    font-size: 1.1em;
+  }
 }

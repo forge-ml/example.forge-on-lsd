@@ -4,7 +4,7 @@
   "version": "0.0.0",
   "type": "module",
   "scripts": {
-    "dev:frontend": "vite --host --port 5173",
+    "dev:frontend": "vite --host --port 5174",
     "dev:backend": "bun --watch index.ts",
     "dev": "concurrently \"npm run dev:frontend\" \"npm run dev:backend\"",
     "start": "node index.js",
